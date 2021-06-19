@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     end
   end
   def confirm
-        @post = Post.new(post_params)
+        @post = current_user.posts.build(post_params)
       render :new if @post.invalid?
     end
   # PATCH/PUT /posts/1 or /posts/1.json

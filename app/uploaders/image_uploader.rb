@@ -15,7 +15,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
 
-     process resize_to_fit: [500, 500]
+     process resize_to_fit: [200, 200]
 
 
 
