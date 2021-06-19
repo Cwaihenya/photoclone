@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Posts</h1>
-
+<div class="container">
+  <h1 class="title">Photoclone</h1>
+    <nav class="menu">
+      <ul>
+        <li class="col-md-4"><%= link_to "New Post", new_post_path(@post) %></li>
+        <li class="col-md-4">Sign out</li>
+      </ul>
+    </nav>
 <table>
   <thead>
     <tr>
