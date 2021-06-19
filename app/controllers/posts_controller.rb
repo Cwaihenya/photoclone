@@ -33,7 +33,10 @@ class PostsController < ApplicationController
       end
     end
   end
-
+  def confirm
+        @post = Post.new(post_params)
+      render :new if @post.invalid?
+    end
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
