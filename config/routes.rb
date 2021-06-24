@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  root "users#new"
   resources :posts do
     collection do
       post :confirm
@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:new, :create, :show, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
-  root "users#new"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

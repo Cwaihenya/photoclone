@@ -8,20 +8,28 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @user = @post.user
   end
 
   # GET /posts/new
   def new
-    @post = Post.new
+    if params[:back]
+    @post = Post.new(post_params)
+  else
+    @post = current_user.posts.build
+    @user = @post.user
   end
+end
 
   # GET /posts/1/edit
   def edit
+    @user = @post.user
   end
 
   # POST /posts or /posts.json
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -35,7 +43,8 @@ class PostsController < ApplicationController
     end
   end
   def confirm
-        @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
+    @post.user = current_user
       render :new if @post.invalid?
     end
   # PATCH/PUT /posts/1 or /posts/1.json

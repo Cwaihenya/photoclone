@@ -13,7 +13,7 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <tr><%= post.caption %></td>
+        <td><%= post.caption %></td>
         <td><%= image_tag post.image.url %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
