@@ -7,4 +7,5 @@ validates :name,  presence: true, length: { maximum: 30 }
                    has_secure_password
                      validates :password, presence: true, length: { minimum: 6 }
 has_many :posts
+has_many :favorites, dependent: :destroy
 end

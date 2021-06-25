@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
+  <strong>Image:</strong>
+  <%= image_tag @post.image.url %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @post.image.url %>
+  <strong>Caption:</strong>
+  <%= @post.caption %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
