@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @user = @post.user
+
     @favorite = current_user.favorites.find_by(post_id: @post.id)
   end
 
@@ -34,7 +34,7 @@ end
 
     respond_to do |format|
       if @post.save
-        #UserMailer.user_email(@post).deliver_now
+        PostMailer.post_mail(@post).deliver
         format.html { redirect_to post_path @post, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
